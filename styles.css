@@ -614,6 +614,11 @@ button:focus:not(:focus-visible) {
 }
 
 /* Print Styles */
+@page {
+  margin: 0;
+  size: A4;
+}
+
 @media print {
   body {
     background: white;
@@ -641,7 +646,8 @@ button:focus:not(:focus-visible) {
   
   #preview {
     max-width: 100%;
-    padding: 0;
+    padding: 20mm;
+    margin: 0;
   }
   
   .markdown-body {
