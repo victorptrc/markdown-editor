@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-left">
+            <h1 class="app-title">MD Editor</h1>
+        </div>
+        <div class="header-center">
+            <button id="newDoc" title="New Document (Ctrl+N)">New</button>
+            <button id="openDoc" title="Open Document (Ctrl+O)">Open</button>
+            <input type="file" id="fileInput" accept=".md,.txt" hidden>
+            <button id="saveDoc" title="Save Document (Ctrl+S)">Save</button>
+            <button id="exportDoc" title="Export Document">Export ▼</button>
+        </div>
+        <div class="header-right">
+            <button id="themeToggle" title="Toggle Theme">🌓</button>
+        </div>
+    </header>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <div class="toolbar-group">
+            <button data-action="bold" title="Bold (Ctrl+B)"><strong>B</strong></button>
+            <button data-action="italic" title="Italic (Ctrl+I)"><em>I</em></button>
+            <button data-action="heading" title="Heading">H</button>
+            <button data-action="link" title="Insert Link">🔗</button>
+            <button data-action="image" title="Insert Image">🖼️</button>
+            <button data-action="code" title="Code Block">&lt;/&gt;</button>
+            <button data-action="quote" title="Blockquote">"</button>
+            <button data-action="ul" title="Unordered List">•</button>
+            <button data-action="ol" title="Ordered List">1.</button>
+            <button data-action="table" title="Insert Table">⊞</button>
+        </div>
+        <div class="toolbar-group mobile-toggle">
+            <button id="togglePreview" title="Toggle Preview">👁️</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="editor-container">
+        <div class="editor-pane">
+            <textarea id="editor" placeholder="Start typing your markdown here..." spellcheck="true"></textarea>
+        </div>
+        <div class="preview-pane">
+            <div id="preview" class="markdown-body"></div>
+        </div>
+    </main>
+
+    <!-- Status Bar -->
+    <footer class="status-bar">
+        <span id="wordCount">Words: 0</span>
+        <span id="charCount">Characters: 0</span>
+        <span id="lineInfo">Line: 1, Column: 1</span>
+        <span id="saveStatus" class="save-status">Saved</span>
+    </footer>
+
+    <!-- Export Modal -->
+    <div id="exportModal" class="modal" hidden>
+        <div class="modal-content">
+            <h2>Export Document</h2>
+            <input type="text" id="filename" placeholder="filename" value="document">
+            <div class="export-options">
+                <button data-export="markdown">Export as Markdown (.md)</button>
+                <button data-export="html">Export as HTML (.html)</button>
+                <button data-export="pdf">Export as PDF</button>
+                <button data-export="text">Export as Text (.txt)</button>
+            </div>
+            <button id="cancelExport">Cancel</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
