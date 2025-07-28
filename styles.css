@@ -274,6 +274,7 @@ button:focus:not(:focus-visible) {
 
 /* Markdown Body Styles */
 .markdown-body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: var(--text-primary);
@@ -614,6 +615,8 @@ button:focus:not(:focus-visible) {
 }
 
 /* Print Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @page {
   margin: 0;
   size: A4;
@@ -623,6 +626,7 @@ button:focus:not(:focus-visible) {
   body {
     background: white;
     color: black;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
   
   .app-header,
