@@ -1,18 +1,24 @@
 /* CSS Variables for Theming */
 :root {
   --bg-primary: #ffffff;
-  --bg-secondary: #f5f5f5;
-  --bg-tertiary: #fafafa;
-  --text-primary: #333333;
-  --text-secondary: #666666;
-  --accent: #007bff;
-  --accent-hover: #0056b3;
-  --border: #e0e0e0;
-  --success: #28a745;
-  --warning: #ffc107;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --accent-secondary: #10b981;
+  --accent-tertiary: #8b5cf6;
+  --accent-quaternary: #f59e0b;
+  --border: #e2e8f0;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
   --shadow: rgba(0, 0, 0, 0.1);
   --editor-bg: #ffffff;
-  --toolbar-bg: #f8f9fa;
+  --toolbar-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --button-gradient: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  --header-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
 }
 
 [data-theme="dark"] {
@@ -40,7 +46,7 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background-color: var(--bg-primary);
+  background: var(--bg-primary);
   color: var(--text-primary);
   height: 100vh;
   overflow: hidden;
@@ -51,13 +57,14 @@ body {
 /* Header Styles */
 .app-header {
   height: 56px;
-  background-color: var(--bg-secondary);
+  background: var(--header-gradient);
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
   flex-shrink: 0;
+  box-shadow: 0 1px 3px var(--shadow);
 }
 
 .header-left {
@@ -85,21 +92,23 @@ body {
 
 /* Button Styles */
 button {
-  background-color: var(--bg-primary);
+  background: var(--bg-primary);
   color: var(--text-primary);
   border: 1px solid var(--border);
   padding: 8px 16px;
   font-size: 14px;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: inherit;
+  font-weight: 500;
 }
 
 button:hover {
-  background-color: var(--accent);
+  background: var(--accent);
   color: white;
   border-color: var(--accent);
+  box-shadow: 0 2px 4px var(--shadow);
 }
 
 button:active {
@@ -116,7 +125,7 @@ button:active {
 /* Toolbar Styles */
 .toolbar {
   height: 40px;
-  background-color: var(--toolbar-bg);
+  background: var(--toolbar-bg);
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
@@ -138,6 +147,9 @@ button:active {
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
 }
 
 .mobile-toggle {
@@ -159,6 +171,7 @@ button:active {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background: var(--bg-primary);
 }
 
 #editor {
@@ -168,7 +181,7 @@ button:active {
   font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
   font-size: 14px;
   line-height: 1.6;
-  background-color: var(--editor-bg);
+  background: var(--editor-bg);
   color: var(--text-primary);
   border: none;
   outline: none;
@@ -179,7 +192,7 @@ button:active {
 /* Preview Pane */
 .preview-pane {
   overflow-y: auto;
-  background-color: var(--bg-primary);
+  background: var(--bg-tertiary);
 }
 
 #preview {
@@ -209,18 +222,21 @@ button:active {
 
 .markdown-body h1 {
   font-size: 2em;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--accent);
   padding-bottom: 0.3em;
+  color: var(--accent);
 }
 
 .markdown-body h2 {
   font-size: 1.5em;
   border-bottom: 1px solid var(--border);
   padding-bottom: 0.3em;
+  color: var(--accent-secondary);
 }
 
 .markdown-body h3 {
   font-size: 1.25em;
+  color: var(--accent-tertiary);
 }
 
 .markdown-body p {
@@ -228,34 +244,41 @@ button:active {
 }
 
 .markdown-body code {
-  background-color: var(--bg-secondary);
+  background: var(--bg-secondary);
   padding: 0.2em 0.4em;
-  border-radius: 3px;
+  border-radius: 4px;
   font-size: 85%;
   font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  color: var(--accent);
+  border: 1px solid var(--border);
 }
 
 .markdown-body pre {
-  background-color: var(--bg-secondary);
+  background: var(--bg-secondary);
   padding: 16px;
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
   border-radius: 6px;
   margin-bottom: 16px;
+  border: 1px solid var(--border);
 }
 
 .markdown-body pre code {
-  background-color: transparent;
+  background: transparent;
   padding: 0;
   font-size: 100%;
+  color: var(--text-primary);
+  border: none;
 }
 
 .markdown-body blockquote {
   padding: 0 1em;
   color: var(--text-secondary);
-  border-left: 0.25em solid var(--border);
+  border-left: 4px solid var(--accent);
   margin-bottom: 16px;
+  background: var(--bg-secondary);
+  border-radius: 0 4px 4px 0;
 }
 
 .markdown-body ul,
@@ -310,7 +333,7 @@ button:active {
 /* Status Bar */
 .status-bar {
   height: 32px;
-  background-color: var(--bg-secondary);
+  background: var(--bg-secondary);
   border-top: 1px solid var(--border);
   display: flex;
   align-items: center;
